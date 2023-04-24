@@ -1,6 +1,5 @@
 \documentclass[10pt,landscape,a4paper]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
 %\usepackage[LY1,T1]{fontenc}
 %\usepackage{frutigernext}
@@ -15,23 +14,13 @@
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{microtype}
 \usepackage{pdfpages}
+\usepackage{blindtext}
 
 \let\bar\overline
 
-\include{inhalt/def}
-
 \begin{document}
-%\footnotesize
-\small
+\tiny
 \begin{multicols*}{5}
-\input{inhalt/aussagen}
-\input{inhalt/mengen}
-\input{inhalt/relationen}
-\input{inhalt/abbildungen}
-%\input{inhalt/beweise} 
-\input{inhalt/graphen}
-%\input{inhalt/graphalgo}
-%\input{inhalt/bool}
-%\input{inhalt/formeln}
+\input{sections/bayes_net}
 \end{multicols*}
 \end{document}
