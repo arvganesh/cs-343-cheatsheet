@@ -1,1 +1,20 @@
 \section{RL}
+Idea: Model world as MDP, but we don't know $T$ and $R$.
+
+\textbf{Model-Based RL}
+Approximate $T$ and $R$ based on experiences. Average $R$ and $T$ across epsiodes.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{model-based}
+\end{figure}
+\textbf{Model-Free RL}
+\textbf{Direct Evaluation:} Learn values of states from episodes.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{direct-evaluation}
+\end{figure}
+$V(A) = -10 / 1 = -10$
+$V(B) = (10 * 3) / 3 = 10$
+$V(C) = (\sum $R$ + V(next)) / 4 = (-1 * 4 + 10 * 3 + -10 * 1) / 4 = 4$
+
+\textbf{TD-Learning:} Fix $\pi$, learn $V$ of states from episodes.
