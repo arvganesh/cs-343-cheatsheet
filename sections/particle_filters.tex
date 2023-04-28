@@ -1,1 +1,11 @@
 \section{Particle Filters}
+When $|X|$ of variable is too large, it's hard to keep track of an explicit distribution $P(X)$.
+
+Instead, use particles (samples) to approximate $P(X)$, $P(x)$ approximated by the \# of particles with value $x$.
+
+\textbf{1. Elapse Time:} Change particle positions by sampling from transition distribution $P(X_t|X_{t-1})$.
+
+\textbf{2. Observe Evidence (reweight particles)}: 
+Reweight particles based on with weight $w(X) = P(e|X)$
+
+\textbf{3. Resample} Resample $N$ particles with replacement according to their weights and repeat.
