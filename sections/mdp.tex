@@ -2,19 +2,18 @@
 Markov property: action outcomes depend only on the current state. \\
 An MDP is defined by: a set of states $s\in S$, a set of actions $a\in A$, a transition function $T(s,a,s')$, a reward function $R(s,a,s')$, a start state $s_0$, and maybe a terminal state. For model-based methods, we want an optimal policy $\pi^*:S\rightarrow A$. \\
 Instead of measuring overall return $R$ for a trajectory, prefer sooner rewards, so use discount factor $\gamma$. This also ensures that discounted returns are finite even for infinite states. \\
-We have 2 relevant values for a policy $\pi$:
-$$V(s)=\text{expected utility starting in $s$ and acting according to $\pi$}$$
-$$Q(s, a)=\text{exp. util. at $s$, taking action $a$, and acting according to $\pi$}$$
+We have 2 relevant values for a policy $\pi$:\\
+$V(s)=\text{expected utility starting in $s$ and acting according to $\pi$}$\\
+$Q(s, a)=\text{exp. util. at $s$, taking action $a$, and acting according to $\pi$}$\\
 For optimal policy $\pi^*$, these are $V^*$ and $Q^*$. \\
-Because $V^*$ and $Q^*$ represent values for the optimal policy $\pi^*$, we can derive recursive formulas from them known as the Bellman equations:
-$$V^*(s)=\max_{a}Q^*(s,a)$$
-$$Q^*(s,a)=\sum_{s'}T(s,a,s')\left(R(s,a,s')+\gamma V^*(s')\right)$$
-$$\implies V^*(s)=\max_{a}\sum_{s'}T(s,a,s')\left(R(s,a,s')+\gamma V^*(s')\right)$$
-$$\implies Q^*(s,a)=\sum_{s'}T(s,a,s')\left(R(s,a,s')+\gamma\max_{a}Q^*(s,a)\right)$$
-\textbf{Policy stuff} \\
-Value iteration: Start with $V_{0}(s)=0$: no time steps left means an expected reward sum of zero. Given a vector of $V_k(s)$ values, do one step of expectimax from each state:
-$$V_{k+1}(s)\leftarrow\max_{a}\sum_{s'}T(s,a,s')\left(R(s,a,s')+\gamma V_k(s')\right)$$
+Because $V^*$ and $Q^*$ represent values for the optimal policy $\pi^*$, we can derive recursive formulas from them known as the Bellman equations:\\
+$V^*(s)=\max_{a}Q^*(s,a)$\\
+$Q^*(s,a)=\sum_{s'}T(s,a,s')\left(R(s,a,s')+\gamma V^*(s')\right)$\\
+$\implies V^*(s)=\max_{a}\sum_{s'}T(s,a,s')\left(R(s,a,s')+\gamma V^*(s')\right)$\\
+$\implies Q^*(s,a)=\sum_{s'}T(s,a,s')\left(R(s,a,s')+\gamma\max_{a}Q^*(s,a)\right)$\\
+\textbf{Value iteration}: Start with $V_{0}(s)=0$: no time steps left means an expected reward sum of zero. Given a vector of $V_k(s)$ values, do one step of expectimax from each state:
+$V_{k+1}(s)\leftarrow\max_{a}\sum_{s'}T(s,a,s')\left(R(s,a,s')+\gamma V_k(s')\right)$\\
 Repeat until convergence. \\
-Policy evaluation: Do policy iteration, except instead of doing argmax over all $a$ from a given state, do $\pi(a)$ based on policy $\pi$. \\
-Policy extraction: Assume you have optimal values $V^*(s)$. Then, to compute actions from these values, just do a one-step expectimax over possible actions from given state. \\
-Policy iteration: repeat policy evaluation and policy extraction until convergence. \\
+\textbf{Policy evaluation}: Do policy iteration, except instead of doing argmax over all $a$ from a given state, do $\pi(a)$ based on policy $\pi$. \\
+\textbf{Policy extraction}: Assume you have optimal values $V^*(s)$. Then, to compute actions from these values, just do a one-step expectimax over possible actions from given state. \\
+\textbf{Policy iteration}: repeat policy evaluation and policy extraction until convergence. \\
